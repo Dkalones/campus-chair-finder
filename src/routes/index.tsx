@@ -337,7 +337,7 @@ function Index() {
                         : "bg-berry/25 text-berry"
                     }`}
                   >
-                    {BY_CODE[p].nome}
+                    {BY_CODE[p]?.nome ?? p}
                   </button>
                 ))}
                 <span className="ml-2 text-[11px] text-paper/45">Libera:</span>
