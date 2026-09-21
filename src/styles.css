@@ -73,6 +73,16 @@
 
 :root {
   --radius: 0.625rem;
+  --font-display-family: "Space Grotesk", sans-serif;
+  --font-body-family: "IBM Plex Sans", sans-serif;
+  --paper: oklch(0.972 0.006 250);
+  --ink: oklch(0.253 0.032 250);
+  --brand: oklch(0.53 0.21 261);
+  --accent-green: oklch(0.66 0.15 160);
+  --amber: oklch(0.78 0.155 75);
+  --berry: oklch(0.62 0.19 10);
+  --mist: oklch(0.925 0.013 250);
+  --surface: oklch(1 0 0);
   --background: oklch(1 0 0);
   --foreground: oklch(0.129 0.042 264.695);
   --card: oklch(1 0 0);
