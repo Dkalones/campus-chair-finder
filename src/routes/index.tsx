@@ -350,7 +350,7 @@ function Index() {
                     onClick={() => setSelecionada(c)}
                     className="rounded-full bg-white/10 px-2.5 py-1 text-[11px] font-medium"
                   >
-                    {BY_CODE[c].nome}
+                    {BY_CODE[c]?.nome ?? c}
                   </button>
                 ))}
               </div>
