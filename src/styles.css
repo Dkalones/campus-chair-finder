@@ -26,6 +26,16 @@
   --radius-2xl: calc(var(--radius) + 8px);
   --radius-3xl: calc(var(--radius) + 12px);
   --radius-4xl: calc(var(--radius) + 16px);
+  --font-display: var(--font-display-family);
+  --font-body: var(--font-body-family);
+  --color-paper: var(--paper);
+  --color-ink: var(--ink);
+  --color-brand: var(--brand);
+  --color-accent-green: var(--accent-green);
+  --color-amber: var(--amber);
+  --color-berry: var(--berry);
+  --color-mist: var(--mist);
+  --color-surface: var(--surface);
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
@@ -63,6 +73,16 @@
 
 :root {
   --radius: 0.625rem;
+  --font-display-family: "Space Grotesk", sans-serif;
+  --font-body-family: "IBM Plex Sans", sans-serif;
+  --paper: oklch(0.972 0.006 250);
+  --ink: oklch(0.253 0.032 250);
+  --brand: oklch(0.53 0.21 261);
+  --accent-green: oklch(0.66 0.15 160);
+  --amber: oklch(0.78 0.155 75);
+  --berry: oklch(0.62 0.19 10);
+  --mist: oklch(0.925 0.013 250);
+  --surface: oklch(1 0 0);
   --background: oklch(1 0 0);
   --foreground: oklch(0.129 0.042 264.695);
   --card: oklch(1 0 0);
@@ -138,7 +158,9 @@
   }
 
   body {
-    background-color: var(--color-background);
-    color: var(--color-foreground);
+    background-color: var(--paper);
+    color: var(--ink);
+    font-family: var(--font-body-family);
+    -webkit-font-smoothing: antialiased;
   }
 }
