@@ -147,16 +147,16 @@ function Index() {
   const atual = selecionada ? BY_CODE[selecionada] : null;
 
   return (
-    <main className="min-h-screen bg-paper font-body text-ink antialiased">
-      <header className="sticky top-0 z-40 bg-paper/95 backdrop-blur ring-1 ring-black/5">
+    <main className="min-h-screen bg-notebook font-body text-ink antialiased">
+      <header className="sticky top-0 z-40 border-b-2 border-dashed border-ink/25 bg-paper/95 backdrop-blur">
         <div className="mx-auto max-w-[1440px] px-4 sm:px-6">
           <div className="flex flex-wrap items-center justify-between gap-4 py-3">
             <div className="flex items-center gap-3">
-              <div className="grid size-9 place-items-center rounded-xl bg-brand font-display text-lg font-semibold text-paper">
-                C
+              <div className="grid size-10 -rotate-6 place-items-center rounded-lg bg-amber/60 font-display text-2xl font-bold text-ink ring-doodle">
+                ✎
               </div>
               <div>
-                <p className="font-display text-lg font-semibold leading-none">Grade Curricular</p>
+                <p className="font-display text-2xl font-bold leading-none">Grade Curricular</p>
                 <p className="text-[11px] text-ink/55">Engenharia Civil · UEPB</p>
               </div>
             </div>
@@ -165,7 +165,7 @@ function Index() {
                 value={busca}
                 onChange={(e) => setBusca(e.target.value)}
                 placeholder="Buscar disciplina..."
-                className="rounded-full bg-surface px-4 py-2 text-sm outline-none ring-1 ring-black/5 placeholder:text-ink/40 focus:ring-brand/50"
+                className="rounded-lg bg-surface px-4 py-2 text-sm outline-none ring-doodle placeholder:text-ink/40 focus:ring-2 focus:ring-brand/60"
               />
               {(
                 [
@@ -179,8 +179,8 @@ function Index() {
                   onClick={() => setFiltro(valor)}
                   className={
                     filtro === valor
-                      ? "rounded-full border border-brand bg-brand px-3 py-2 text-sm font-medium text-paper"
-                      : "rounded-full px-3 py-2 text-sm font-medium ring-1 ring-black/5 transition-colors hover:bg-mist"
+                      ? "-rotate-1 rounded-lg bg-brand px-3 py-2 text-sm font-semibold text-paper ring-doodle"
+                      : "rounded-lg px-3 py-2 text-sm font-medium ring-1 ring-dashed ring-ink/30 transition-all hover:-rotate-1 hover:bg-amber/30"
                   }
                 >
                   {label}
@@ -198,9 +198,9 @@ function Index() {
             ))}
             <span className="hidden h-4 w-px bg-ink/10 sm:block" />
             <div className="flex items-center gap-3">
-              <div className="relative h-2.5 w-40 overflow-hidden rounded-full bg-mist">
+              <div className="relative h-3 w-40 overflow-hidden rounded-full bg-surface ring-doodle">
                 <div
-                  className="absolute inset-y-0 left-0 rounded-full bg-accent-green transition-all duration-500"
+                  className="absolute inset-y-0 left-0 rounded-full bg-accent-green/80 transition-all duration-500"
                   style={{ width: `${stats.pct}%` }}
                 />
               </div>
