@@ -309,7 +309,7 @@ function Index() {
                           : "bg-berry/25 text-berry"
                   }`}
                 >
-                  {ESTADO_LABEL[estados[atual.code]]}
+                  {ESTADO_LABEL[estados[atual.code] ?? "bloqueada"]}
                 </span>
                 <span className="text-[11px] text-paper/50">
                   Período {atual.periodo} · código {atual.code}
