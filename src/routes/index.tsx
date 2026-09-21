@@ -104,7 +104,7 @@ function Index() {
       bloqueada: 0,
     };
     DISCIPLINAS.forEach((d) => {
-      const e = estados[d.code];
+      const e = estados[d.code] ?? "bloqueada";
       contagem[e] += 1;
       if (e === "concluida") horasFeitas += d.horas;
     });
@@ -116,7 +116,7 @@ function Index() {
     const foco = destaque ?? selecionada;
     if (!foco) return new Set<string>();
     const d = BY_CODE[foco];
-    return new Set<string>([...d.prereqs, ...(DEPENDENTES[foco] ?? [])]);
+    return new Set<string>([...(d?.prereqs ?? []), ...(DEPENDENTES[foco] ?? [])]);
   }, [destaque, selecionada]);
 
   const termo = busca.trim().toLowerCase();
