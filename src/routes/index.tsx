@@ -254,7 +254,7 @@ function Index() {
                     </div>
                     <div className="flex flex-col gap-2">
                       {lista.map((d) => {
-                        const e = estados[d.code];
+                        const e = estados[d.code] ?? "bloqueada";
                         const ligada = relacionadas.has(d.code);
                         return (
                           <button
