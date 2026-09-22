@@ -271,3 +271,31 @@ export const PERIODOS = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 export const DISCIPLINAS_ENG   = DISCIPLINAS.filter((d) => d.curso === "engcivil");
 export const DISCIPLINAS_OD    = DISCIPLINAS.filter((d) => d.curso === "odonto");
 export const DISCIPLINAS_FS    = DISCIPLINAS.filter((d) => d.curso === "fisica");
+
+export type CursoId = "engcivil" | "odonto" | "fisica";
+
+export const CURSOS: { id: CursoId; nome: string; sigla: string }[] = [
+  { id: "engcivil", nome: "Engenharia Civil", sigla: "Eng. Civil" },
+  { id: "odonto", nome: "Odontologia", sigla: "Odonto" },
+  { id: "fisica", nome: "Física", sigla: "Física" },
+];
+
+export const CURSO_PADRAO: CursoId = "engcivil";
+
+export const DISCIPLINAS_POR_CURSO: Record<CursoId, Disciplina[]> = {
+  engcivil: DISCIPLINAS_ENG,
+  odonto: DISCIPLINAS_OD,
+  fisica: DISCIPLINAS_FS,
+};
+
+export const CARGA_TOTAL_POR_CURSO: Record<CursoId, number> = {
+  engcivil: CARGA_TOTAL_ENG,
+  odonto: CARGA_TOTAL_OD,
+  fisica: CARGA_TOTAL_FS,
+};
+
+export const PERIODOS_POR_CURSO: Record<CursoId, number[]> = {
+  engcivil: PERIODOS,
+  odonto: Array.from(new Set(DISCIPLINAS_OD.map((d) => d.periodo))).sort((a, b) => a - b),
+  fisica: Array.from(new Set(DISCIPLINAS_FS.map((d) => d.periodo))).sort((a, b) => a - b),
+};
