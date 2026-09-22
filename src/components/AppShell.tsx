@@ -3,6 +3,8 @@ import { useEffect, useState, type ReactNode } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { useTema } from "@/hooks/useTema";
 import { TEMAS, type TemaId } from "@/lib/temas";
+import { useCurso } from "@/hooks/useCurso";
+import { CURSOS, type CursoId } from "@/data/curriculo";
 
 const ABAS = [
   { to: "/grade", label: "Grade", icone: "✎" },
@@ -12,6 +14,7 @@ const ABAS = [
 
 export function AppShell({ children }: { children: ReactNode }) {
   const { tema, setTema } = useTema();
+  const { curso, setCurso } = useCurso();
   const navigate = useNavigate();
   const [email, setEmail] = useState<string | null>(null);
 
@@ -24,6 +27,8 @@ export function AppShell({ children }: { children: ReactNode }) {
     void navigate({ to: "/auth" });
   }
 
+  const cursoAtual = CURSOS.find((c) => c.id === curso);
+
   return (
     <div className="min-h-screen bg-notebook font-body text-ink antialiased">
       <header className="sticky top-0 z-40 border-b-2 border-dashed border-ink/25 bg-paper/95 backdrop-blur">
@@ -34,7 +39,7 @@ export function AppShell({ children }: { children: ReactNode }) {
             </div>
             <div>
               <p className="font-display text-2xl font-bold leading-none">Meu Caderno da Grade</p>
-              <p className="text-[11px] text-ink/55">Engenharia Civil · UEPB</p>
+              <p className="text-[11px] text-ink/55">{cursoAtual?.nome ?? "Curso"} · UEPB</p>
             </div>
           </div>
 
@@ -56,6 +61,18 @@ export function AppShell({ children }: { children: ReactNode }) {
           </nav>
 
           <div className="flex flex-wrap items-center gap-2">
+            <select
+              value={curso}
+              onChange={(e) => setCurso(e.target.value as CursoId)}
+              className="rounded-lg bg-surface px-3 py-2 text-sm outline-none ring-doodle"
+              aria-label="Curso"
+            >
+              {CURSOS.map((c) => (
+                <option key={c.id} value={c.id}>
+                  {c.nome}
+                </option>
+              ))}
+            </select>
             <select
               value={tema}
               onChange={(e) => void setTema(e.target.value as TemaId)}
