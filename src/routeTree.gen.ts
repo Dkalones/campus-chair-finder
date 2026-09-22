@@ -14,6 +14,7 @@ import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/
 import { Route as AuthRouteImport } from './routes/auth'
 import { Route as AuthenticatedCalendarioRouteImport } from './routes/_authenticated/calendario'
 import { Route as AuthenticatedGradeRouteImport } from './routes/_authenticated/grade'
+import { Route as AuthenticatedAnotacoesRouteImport } from './routes/_authenticated/anotacoes'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -39,18 +40,25 @@ const AuthenticatedGradeRoute = AuthenticatedGradeRouteImport.update({
   path: '/grade',
   getParentRoute: () => AuthenticatedRouteRoute,
 } as any)
+const AuthenticatedAnotacoesRoute = AuthenticatedAnotacoesRouteImport.update({
+  id: '/anotacoes',
+  path: '/anotacoes',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/auth': typeof AuthRoute
   '/calendario': typeof AuthenticatedCalendarioRoute
   '/grade': typeof AuthenticatedGradeRoute
+  '/anotacoes': typeof AuthenticatedAnotacoesRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/auth': typeof AuthRoute
   '/calendario': typeof AuthenticatedCalendarioRoute
   '/grade': typeof AuthenticatedGradeRoute
+  '/anotacoes': typeof AuthenticatedAnotacoesRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -59,12 +67,13 @@ export interface FileRoutesById {
   '/auth': typeof AuthRoute
   '/_authenticated/calendario': typeof AuthenticatedCalendarioRoute
   '/_authenticated/grade': typeof AuthenticatedGradeRoute
+  '/_authenticated/anotacoes': typeof AuthenticatedAnotacoesRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/auth' | '/calendario' | '/grade'
+  fullPaths: '/' | '/auth' | '/calendario' | '/grade' | '/anotacoes'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/auth' | '/calendario' | '/grade'
+  to: '/' | '/auth' | '/calendario' | '/grade' | '/anotacoes'
   id:
     | '__root__'
     | '/'
@@ -72,6 +81,7 @@ export interface FileRouteTypes {
     | '/auth'
     | '/_authenticated/calendario'
     | '/_authenticated/grade'
+    | '/_authenticated/anotacoes'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -117,17 +127,26 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedGradeRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
+    '/_authenticated/anotacoes': {
+      id: '/_authenticated/anotacoes'
+      path: '/anotacoes'
+      fullPath: '/anotacoes'
+      preLoaderRoute: typeof AuthenticatedAnotacoesRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
   }
 }
 
 interface AuthenticatedRouteRouteChildren {
   AuthenticatedCalendarioRoute: typeof AuthenticatedCalendarioRoute
   AuthenticatedGradeRoute: typeof AuthenticatedGradeRoute
+  AuthenticatedAnotacoesRoute: typeof AuthenticatedAnotacoesRoute
 }
 
 const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
   AuthenticatedCalendarioRoute: AuthenticatedCalendarioRoute,
   AuthenticatedGradeRoute: AuthenticatedGradeRoute,
+  AuthenticatedAnotacoesRoute: AuthenticatedAnotacoesRoute,
 }
 
 const AuthenticatedRouteRouteWithChildren =
