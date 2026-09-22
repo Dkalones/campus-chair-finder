@@ -167,23 +167,10 @@
 
 @utility bg-notebook {
   background-color: var(--paper);
-  background-image:
-    linear-gradient(
-      to right,
-      transparent 0,
-      transparent 47px,
-      oklch(0.75 0.08 20 / 0.35) 47px,
-      oklch(0.75 0.08 20 / 0.35) 48px,
-      transparent 48px
-    ),
-    repeating-linear-gradient(
-      to bottom,
-      transparent 0,
-      transparent 31px,
-      oklch(0.7 0.06 240 / 0.25) 31px,
-      oklch(0.7 0.06 240 / 0.25) 32px
-    );
+  background-image: var(--sheet-image);
+  background-size: var(--sheet-size, auto);
 }
+
 
 @utility ring-doodle {
   box-shadow:
