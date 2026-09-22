@@ -167,7 +167,21 @@
 
 @utility bg-notebook {
   background-color: var(--paper);
-  background-image:
+  background-image: var(--sheet-image);
+  background-size: var(--sheet-size, auto);
+}
+
+
+@utility ring-doodle {
+  box-shadow:
+    0 0 0 1.5px oklch(0.3 0.035 255 / 0.55),
+    2.5px 3px 0 0 oklch(0.3 0.035 255 / 0.18);
+}
+
+/* ===== Temas de caderno ===== */
+:root,
+[data-tema="caderno"] {
+  --sheet-image:
     linear-gradient(
       to right,
       transparent 0,
@@ -185,8 +199,98 @@
     );
 }
 
-@utility ring-doodle {
+[data-tema="quadriculado"] {
+  --paper: oklch(0.985 0.005 230);
+  --ink: oklch(0.32 0.03 250);
+  --brand: oklch(0.52 0.16 250);
+  --accent-green: oklch(0.6 0.13 155);
+  --amber: oklch(0.82 0.14 85);
+  --berry: oklch(0.58 0.18 20);
+  --mist: oklch(0.94 0.01 230);
+  --surface: oklch(1 0 0);
+  --sheet-image:
+    repeating-linear-gradient(
+      to right,
+      transparent 0,
+      transparent 23px,
+      oklch(0.6 0.07 240 / 0.18) 23px,
+      oklch(0.6 0.07 240 / 0.18) 24px
+    ),
+    repeating-linear-gradient(
+      to bottom,
+      transparent 0,
+      transparent 23px,
+      oklch(0.6 0.07 240 / 0.18) 23px,
+      oklch(0.6 0.07 240 / 0.18) 24px
+    );
+}
+
+[data-tema="pontilhado"] {
+  --paper: oklch(0.98 0.004 95);
+  --ink: oklch(0.28 0.02 270);
+  --brand: oklch(0.48 0.13 285);
+  --accent-green: oklch(0.63 0.12 160);
+  --amber: oklch(0.82 0.13 80);
+  --berry: oklch(0.6 0.16 15);
+  --mist: oklch(0.94 0.005 95);
+  --surface: oklch(1 0 0);
+  --sheet-image: radial-gradient(oklch(0.55 0.02 270 / 0.3) 1.3px, transparent 1.3px);
+  --sheet-size: 22px 22px;
+}
+
+[data-tema="pastel"] {
+  --paper: oklch(0.97 0.02 330);
+  --ink: oklch(0.34 0.05 320);
+  --brand: oklch(0.6 0.15 320);
+  --accent-green: oklch(0.72 0.12 165);
+  --amber: oklch(0.86 0.12 95);
+  --berry: oklch(0.65 0.17 5);
+  --mist: oklch(0.94 0.03 330);
+  --surface: oklch(0.995 0.01 330);
+  --sheet-image: repeating-linear-gradient(
+    to bottom,
+    transparent 0,
+    transparent 33px,
+    oklch(0.7 0.09 320 / 0.25) 33px,
+    oklch(0.7 0.09 320 / 0.25) 34px
+  );
+}
+
+[data-tema="kraft"] {
+  --paper: oklch(0.83 0.05 75);
+  --ink: oklch(0.28 0.04 60);
+  --brand: oklch(0.45 0.12 40);
+  --accent-green: oklch(0.55 0.12 150);
+  --amber: oklch(0.78 0.15 80);
+  --berry: oklch(0.52 0.17 25);
+  --mist: oklch(0.78 0.05 75);
+  --surface: oklch(0.89 0.04 78);
+  --sheet-image:
+    repeating-linear-gradient(
+      to bottom,
+      transparent 0,
+      transparent 31px,
+      oklch(0.4 0.04 60 / 0.15) 31px,
+      oklch(0.4 0.04 60 / 0.15) 32px
+    );
+}
+
+[data-tema="moderno"] {
+  --paper: oklch(0.21 0.02 260);
+  --ink: oklch(0.95 0.01 260);
+  --brand: oklch(0.68 0.16 255);
+  --accent-green: oklch(0.72 0.15 160);
+  --amber: oklch(0.8 0.14 85);
+  --berry: oklch(0.65 0.18 20);
+  --mist: oklch(0.28 0.02 260);
+  --surface: oklch(0.26 0.02 260);
+  --sheet-image: radial-gradient(oklch(0.85 0.02 260 / 0.1) 1.2px, transparent 1.2px);
+  --sheet-size: 24px 24px;
+}
+
+[data-tema="moderno"] .ring-doodle,
+[data-tema="moderno"] [class*="ring-doodle"] {
   box-shadow:
-    0 0 0 1.5px oklch(0.3 0.035 255 / 0.55),
-    2.5px 3px 0 0 oklch(0.3 0.035 255 / 0.18);
+    0 0 0 1.5px oklch(0.95 0.01 260 / 0.25),
+    2.5px 3px 0 0 oklch(0 0 0 / 0.35);
 }
