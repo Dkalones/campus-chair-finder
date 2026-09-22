@@ -14,7 +14,111 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      anotacoes: {
+        Row: {
+          code: string | null
+          conteudo: string
+          created_at: string
+          id: string
+          titulo: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          code?: string | null
+          conteudo?: string
+          created_at?: string
+          id?: string
+          titulo?: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          code?: string | null
+          conteudo?: string
+          created_at?: string
+          id?: string
+          titulo?: string
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      preferencias: {
+        Row: {
+          tema: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          tema?: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          tema?: string
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      progresso: {
+        Row: {
+          code: string
+          id: string
+          status: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          code: string
+          id?: string
+          status: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          code?: string
+          id?: string
+          status?: string
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      provas: {
+        Row: {
+          code: string | null
+          created_at: string
+          data: string
+          hora: string | null
+          id: string
+          observacao: string | null
+          titulo: string
+          user_id: string
+        }
+        Insert: {
+          code?: string | null
+          created_at?: string
+          data: string
+          hora?: string | null
+          id?: string
+          observacao?: string | null
+          titulo: string
+          user_id: string
+        }
+        Update: {
+          code?: string | null
+          created_at?: string
+          data?: string
+          hora?: string | null
+          id?: string
+          observacao?: string | null
+          titulo?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
