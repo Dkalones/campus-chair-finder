@@ -3,12 +3,13 @@ import { useMemo, useState } from "react";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { supabase } from "@/integrations/supabase/client";
 import { AppShell } from "@/components/AppShell";
+import { useCurso } from "@/hooks/useCurso";
 import {
   BY_CODE,
-  CARGA_TOTAL,
+  CARGA_TOTAL_POR_CURSO,
   DEPENDENTES,
-  DISCIPLINAS_ENG as DISCIPLINAS,
-  PERIODOS,
+  DISCIPLINAS_POR_CURSO,
+  PERIODOS_POR_CURSO,
   type Disciplina,
 } from "@/data/curriculo";
 
@@ -60,6 +61,10 @@ const DOT_STYLE: Record<Estado, string> = {
 
 function GradePage() {
   const qc = useQueryClient();
+  const { curso } = useCurso();
+  const DISCIPLINAS = DISCIPLINAS_POR_CURSO[curso];
+  const CARGA_TOTAL = CARGA_TOTAL_POR_CURSO[curso];
+  const PERIODOS = PERIODOS_POR_CURSO[curso];
   const [filtro, setFiltro] = useState<Filtro>("todas");
   const [selecionada, setSelecionada] = useState<string | null>(null);
   const [destaque, setDestaque] = useState<string | null>(null);
@@ -130,7 +135,7 @@ function GradePage() {
       map[d.code] = liberada ? "disponivel" : "bloqueada";
     });
     return map;
-  }, [marcacoes]);
+  }, [marcacoes, DISCIPLINAS]);
 
   const stats = useMemo(() => {
     let horasFeitas = 0;
@@ -147,7 +152,7 @@ function GradePage() {
     });
     const pct = Math.round((horasFeitas / CARGA_TOTAL) * 100);
     return { horasFeitas, restantes: CARGA_TOTAL - horasFeitas, pct, contagem };
-  }, [estados]);
+  }, [estados, DISCIPLINAS, CARGA_TOTAL]);
 
   const relacionadas = useMemo(() => {
     const foco = destaque ?? selecionada;
