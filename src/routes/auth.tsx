@@ -1,7 +1,6 @@
 import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
-import { lovable } from "@/integrations/lovable/index";
 
 export const Route = createFileRoute("/auth")({
   head: () => ({
@@ -75,15 +74,15 @@ function AuthPage() {
 
   async function google() {
     setErro(null);
-    const result = await lovable.auth.signInWithOAuth("google", {
-      redirect_uri: window.location.origin,
+    const { error } = await supabase.auth.signInWithOAuth({
+      provider: "google",
+      options: { redirectTo: `${window.location.origin}/grade` },
     });
-    if (result.error) {
+    if (error) {
       setErro("Não foi possível entrar com o Google.");
-      return;
     }
-    if (result.redirected) return;
-    void navigate({ to: "/grade" });
+    // Em caso de sucesso, o Supabase redireciona a página inteira para o
+    // Google e depois de volta para redirectTo — não há nada a fazer aqui.
   }
 
   return (
