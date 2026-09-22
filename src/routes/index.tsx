@@ -1,10 +1,10 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useMemo, useState } from "react";
 import {
   BY_CODE,
   CARGA_TOTAL,
   DEPENDENTES,
-  DISCIPLINAS,
+  DISCIPLINAS_ENG as DISCIPLINAS,
   PERIODOS,
   type Disciplina,
 } from "@/data/curriculo";
@@ -161,6 +161,12 @@ function Index() {
               </div>
             </div>
             <div className="flex flex-wrap items-center gap-2">
+              <Link
+                to="/auth"
+                className="rounded-lg bg-brand px-4 py-2 text-sm font-semibold text-paper ring-doodle hover:-translate-y-0.5 transition-transform"
+              >
+                Entrar / Criar conta
+              </Link>
               <input
                 value={busca}
                 onChange={(e) => setBusca(e.target.value)}
