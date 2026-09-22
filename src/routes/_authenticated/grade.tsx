@@ -7,7 +7,7 @@ import {
   BY_CODE,
   CARGA_TOTAL,
   DEPENDENTES,
-  DISCIPLINAS,
+  DISCIPLINAS_ENG as DISCIPLINAS,
   PERIODOS,
   type Disciplina,
 } from "@/data/curriculo";
